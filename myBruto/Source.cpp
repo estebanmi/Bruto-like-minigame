@@ -95,7 +95,7 @@ int main()
 	setClanName(clanName);  
 	getClanName(clanName);
 	printClanName(clanName);
-
+	*/
 	cout << "Name of weapon(bitwise " << weapons << ")? ";
 
 	cout << weapons << endl;
@@ -119,7 +119,7 @@ int main()
 	printAvailableWeapons(weapons);
 	
 	////////////////////////////////////////
-
+	/*
 	cout << "Name of animal(bitwise " << animals << ")? ";
 
 	cout << numAnimals << endl;
@@ -146,7 +146,7 @@ int main()
 	getchar();
 	registerNextTournament(&registered);
 	isRegisteredNextTournament(registered);
-	printRegisterStatus(registered);*/
+	printRegisterStatus(registered);
 
 	setLevel(capabilitiesP);
 	incLevel(capabilitiesP);
@@ -167,7 +167,7 @@ int main()
 	setAll(capabilitiesP);
 	incAll(capabilitiesP);
 	decAll(capabilitiesP);
-
+	*/
 	getchar();
 	getchar();
 
@@ -205,10 +205,10 @@ void printDisciples(unsigned short disciples)
 }
 
 //Clan name
-void setClanName(char* clanName)
+void setClanName(char* clanName)                                   /////// strings with espaces should be better
 {
 	cin >> clanName;
-}
+}                         
 char* getClanName(char* clanName)
 {
 	return clanName;
@@ -219,7 +219,7 @@ void printClanName(char* clanName)
 }
 
 //weapons
-unsigned short getNumWeapons(unsigned short weapons)
+unsigned short getNumWeapons(unsigned short weapons)              /////// sum operator should be better
 {
 	unsigned short counter = 0;
 
@@ -232,24 +232,70 @@ unsigned short getNumWeapons(unsigned short weapons)
 	}
 
 	return counter;
-}
-void setWeapon(char* weaponName, unsigned short* weapons)
+}           
+void setWeapon(char* weaponName, unsigned short* weapons)          /////// strings with espaces should be better
 {
-	///////////SWORD///////////
-	if (strcmp(weaponName,"Sword") == 0)
+	///////////StoneHammer///////////
+	if (strcmp(weaponName, "StoneHammer") == 0)
 	{
-		if ((*weapons & 0x1000) >> 8)
+		if (*weapons & 0x0001)
 		{
 			cout << "You have " << weaponName << " already.\n";
 		}
 		else
 		{
-			*weapons = *weapons | 0x1000;
+			*weapons = *weapons | 0x0001;
 		}
 	}
-
-
-	///////////KNIFE///////////
+	///////////Baton///////////
+	else if (strcmp(weaponName, "Baton") == 0)
+	{
+		if ((*weapons & 0x0002) >> 1)
+		{
+			cout << "You have " << weaponName << " already.\n";
+		}
+		else
+		{
+			*weapons = *weapons | 0x0002;
+		}
+	}
+	///////////BROADSWORD///////////
+	else if(strcmp(weaponName, "Broadsword") == 0)
+	{
+		if ((*weapons & 0x0004) >> 2)
+		{
+			cout << "You have " << weaponName << " already.\n";
+		}
+		else
+		{
+			*weapons = *weapons | 0x0004;
+		}
+	}
+	///////////Bumps///////////
+	else if (strcmp(weaponName, "Bumps") == 0)
+	{
+		if ((*weapons & 0x0008) >> 3)
+		{
+			cout << "You have " << weaponName << " already.\n";
+		}
+		else
+		{
+			*weapons = *weapons | 0x0008;
+		}
+	}
+	///////////Keyboard///////////
+	else if (strcmp(weaponName, "Keyboard") == 0)
+	{
+		if ((*weapons & 0x0010) >> 4)
+		{
+			cout << "You have " << weaponName << " already.\n";
+		}
+		else
+		{
+			*weapons = *weapons | 0x0010;
+		}
+	}
+	///////////Knife///////////
 	else if (strcmp(weaponName, "Knife") == 0)
 	{
 		if ((*weapons & 0x0020) >> 5)
@@ -259,6 +305,128 @@ void setWeapon(char* weaponName, unsigned short* weapons)
 		else
 		{
 			*weapons = *weapons | 0x0020;
+		}
+	}
+	///////////MorningStar///////////
+	else if (strcmp(weaponName, "MorningStar") == 0)
+	{
+		if ((*weapons & 0x0040) >> 6)
+		{
+			cout << "You have " << weaponName << " already.\n";
+		}
+		else
+		{
+			*weapons = *weapons | 0x0040;
+		}
+	}
+	///////////Lance///////////
+	else if (strcmp(weaponName, "Lance") == 0)
+	{
+		if ((*weapons & 0x0080) >> 7)
+		{
+			cout << "You have " << weaponName << " already.\n";
+		}
+		else
+		{
+			*weapons = *weapons | 0x0080;
+		}
+	}
+	///////////MammothBone///////////
+	else if (strcmp(weaponName, "MammothBone") == 0)
+	{
+		if ((*weapons & 0x0100) >> 8)
+		{
+			cout << "You have " << weaponName << " already.\n";
+		}
+		else
+		{
+			*weapons = *weapons | 0x0100;
+		}
+	}
+	///////////Shuriken///////////
+	else if (strcmp(weaponName, "Shuriken") == 0)
+	{
+		if ((*weapons & 0x0200) >> 9)
+		{
+			cout << "You have " << weaponName << " already.\n";
+		}
+		else
+		{
+			*weapons = *weapons | 0x0200;
+		}
+	}
+	///////////NoodleBowl///////////
+	else if (strcmp(weaponName, "NoodleBowl") == 0)
+	{
+		if ((*weapons & 0x0400) >> 10)
+		{
+			cout << "You have " << weaponName << " already.\n";
+		}
+		else
+		{
+			*weapons = *weapons | 0x0400;
+		}
+	}
+	///////////PiouPiouz///////////
+	else if (strcmp(weaponName, "PiouPiouz") == 0)
+	{
+		if ((*weapons & 0x0800) >> 11)
+		{
+			cout << "You have " << weaponName << " already.\n";
+		}
+		else
+		{
+			*weapons = *weapons | 0x0800;
+		}
+	}
+	///////////SWORD///////////
+	else if (strcmp(weaponName, "Sword") == 0)
+	{
+		if ((*weapons & 0x1000) >> 12)
+		{
+			cout << "You have " << weaponName << " already.\n";
+		}
+		else
+		{
+			*weapons = *weapons | 0x1000;
+		}
+	}
+	///////////TennisRacket///////////
+	else if (strcmp(weaponName, "TennisRacket") == 0)
+	{
+		if ((*weapons & 0x2000) >> 13)
+		{
+			cout << "You have " << weaponName << " already.\n";
+		}
+		else
+		{
+			*weapons = *weapons | 0x2000;
+		}
+	}
+	///////////Trident///////////
+	else if (strcmp(weaponName, "Trident") == 0)
+	{
+		if ((*weapons & 0x4000) >> 14)
+		{
+			cout << "You have " << weaponName << " already.\n";
+		}
+		else
+		{
+			*weapons = *weapons | 0x4000;
+		}
+	}
+
+
+	///////////Trombone///////////
+	else if (strcmp(weaponName, "Trombone") == 0)
+	{
+		if ((*weapons & 0x8000) >> 15)
+		{
+			cout << "You have " << weaponName << " already.\n";
+		}
+		else
+		{
+			*weapons = *weapons | 0x8000;
 		}
 	}
 
