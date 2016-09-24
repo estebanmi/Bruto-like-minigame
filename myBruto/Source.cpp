@@ -67,11 +67,13 @@ int main()
 {
 		//player
 	char* name = new char[10];	
+	*name = NULL;
 		//disciples
 	unsigned short disciples = 0;
 	unsigned short* disciplesPointer = &disciples;
 		//clan
 	char* clanName = new char[20];
+	*clanName = NULL;
 		//weapons
 	char weaponName[20];	
 	unsigned short weapons = 0;
@@ -93,24 +95,25 @@ int main()
 	unsigned short menu2option = 0;
 
 	/// MENU 1/ ///////////////////////////
-	while (menu1)
+	while (menu1==true)
 	{
+		menu2 = true;
 		system("CLS");
-		cout << "\n*** WELCOME TO MyBRUTO ************************** Esteban Marin\n" << endl;
+		std::cout << "\n*** WELCOME TO MyBRUTO ************************** Esteban Marin\n" << endl;
 
-		cout << "1 - Set player name.\t\t" << "12 - Set weapon." << endl;
-		cout << "2 - Get player name.\t\t" << "13 - Has weapon." << endl;
-		cout << "3 - Print player name.\t\t" << "14 - Print weapons." << endl;
-		cout << "4 - Set disciples.\t\t" << "15 - Number of animals." << endl;
-		cout << "5 - Get disciples.\t\t" << "16 - Set animal." << endl;
-		cout << "6 - Print disciples.\t\t" << "17 - Has animal." << endl;
-		cout << "7 - Set Clan name.\t\t" << "18 - Print animals." << endl;
-		cout << "8 - Get Clan name.\t\t" << "19 - Resgister next tournament." << endl;
-		cout << "9 - Print Clan name.\t\t" << "20 - Get resgister status." << endl;
-		cout << "10- Set Capabilities.\t\t" << "21 - Print resgister status." << endl;
-		cout << "11- Number of weapons.\t\t" << "22 - Quit." << endl;
-		cout << "\nOption: ";
-		cin >> menu1option;
+		std::cout << "1 - Set player name.\t\t" << "12 - Set weapon." << endl;
+		std::cout << "2 - Get player name.\t\t" << "13 - Has weapon." << endl;
+		std::cout << "3 - Print player name.\t\t" << "14 - Print weapons." << endl;
+		std::cout << "4 - Set disciples.\t\t" << "15 - Get number of animals." << endl;
+		std::cout << "5 - Get disciples.\t\t" << "16 - Set animal." << endl;
+		std::cout << "6 - Print disciples.\t\t" << "17 - Has animal." << endl;
+		std::cout << "7 - Set Clan name.\t\t" << "18 - Print animals." << endl;
+		std::cout << "8 - Get Clan name.\t\t" << "19 - Resgister next tournament." << endl;
+		std::cout << "9 - Print Clan name.\t\t" << "20 - Get resgister status." << endl;
+		std::cout << "10- Set Capabilities.\t\t" << "21 - Print resgister status." << endl;
+		std::cout << "11- Get number of weapons.\t" << "22 - Quit." << endl;
+		std::cout << "\nOption: ";
+		std::cin >> menu1option;
 
 		switch (menu1option)
 		{
@@ -122,8 +125,6 @@ int main()
 			break;
 		case 3:
 			printName(name);
-			getchar();
-			getchar();
 			break;
 		case 4:
 			setDisciples(&disciples);
@@ -144,132 +145,161 @@ int main()
 			printClanName(clanName);
 			break;
 		case 10:
+			while (menu2 == true)
+			{
+				system("CLS");
+				std::cout << "\n*** WELCOME TO MyBRUTO ************************** Esteban Marin\n" << endl;
 
+				std::cout << "1 - Set level.\t\t\t" << "9 - Decrease agility." << endl;
+				std::cout << "2 - Increase level.\t\t" << "10- Set number of speed." << endl;
+				std::cout << "3 - Decrease level.\t\t" << "11- Increase speed." << endl;
+				std::cout << "4 - Set strength.\t\t" << "12- Decrease speed." << endl;
+				std::cout << "5 - Increase strength.\t\t" << "13- Set all capabilities." << endl;
+				std::cout << "6 - Decrease strength.\t\t" << "14- Increase all capabilities." << endl;
+				std::cout << "7 - Set agility.\t\t" << "15- Decrease all capabilities." << endl;
+				std::cout << "8 - Increase agility.\t\t" << "16- Back menu." << endl;
+				
+				std::cout << "\nOption: ";
+				std::cin >> menu2option;
+
+				switch (menu2option)
+				{
+				case 1:
+					setLevel(capabilitiesP);	
+					system("pause");
+					break;
+				case 2:
+					incLevel(capabilitiesP);
+					system("pause");
+					break;
+				case 3:
+					decLevel(capabilitiesP);
+					system("pause");
+					break;
+				case 4:
+					setStrength(capabilitiesP);	
+					system("pause");
+					break;
+				case 5:
+					incStrength(capabilitiesP);
+					system("pause");
+					break;
+				case 6:
+					decStrength(capabilitiesP);
+					system("pause");
+					break;
+				case 7:
+					setAgility(capabilitiesP);
+					system("pause");
+					break;
+				case 8:
+					incAgility(capabilitiesP);
+					system("pause");
+					break;
+				case 9:
+					decAgility(capabilitiesP);
+					system("pause");
+					break;
+				case 10:
+					setSpeed(capabilitiesP);
+					system("pause");
+					break;
+				case 11:
+					incSpeed(capabilitiesP);
+					system("pause");
+					break;
+				case 12:
+					decSpeed(capabilitiesP);
+					system("pause");
+					break;
+				case 13:
+					setAll(capabilitiesP);	
+					system("pause");
+					break;
+				case 14:
+					incAll(capabilitiesP);
+					system("pause");
+					break;
+				case 15:
+					decAll(capabilitiesP);
+					system("pause");
+					break;
+				case 16:
+					menu2 = false;
+					break;
+				default:
+					cout << "Your option must be 1-16!";
+					system("pause");
+				}	
+			}
 			break;
 		case 11:
-
+			numWeapons = getNumWeapons(weapons);
 			break;
 		case 12:
-
+			cout << "Name of weapon? ";
+			cin >> weaponName;
+			setWeapon(weaponName, &weapons);
 			break;
 		case 13:
-
+			cout << "Name of weapon? ";
+			cin >> weaponName;
+			hasWeapon(weaponName, weapons);
 			break;
 		case 14:
-
+			printAvailableWeapons(weapons);
 			break;
 		case 15:
-
+			numAnimals = getNumAnimals(animals);
 			break;
 		case 16:
-
+			cout << "Name of animal? ";
+			cin >> animalName;
+			setAnimal(animalName, &animals);
 			break;
 		case 17:
-
+			cout << "Name of animal? ";
+			cin >> animalName;
+			hasAnimal(animalName, animals);
 			break;
 		case 18:
-
+			printAvailableAnimals(animals);
 			break;
 		case 19:
-
+			registerNextTournament(&registered);
 			break;
 		case 20:
-
+			isRegisteredNextTournament(registered);
 			break;
 		case 21:
-
+			printRegisterStatus(registered);
 			break;
 		case 22:
-
+			menu1 = false;
 			break;
 		default:
 			cout << "Wrong input! Your option must be 1-22.";
 		}
+		system("pause");
 	}
 	
+	cout << "QUIT";
 
-
-	
-	
-	
-
-	
-
-	
-	
-	cout << "Name of weapon(bitwise " << weapons << ")? ";
-
-	cout << weapons << endl;
-	cin >> weaponName;
-	setWeapon(weaponName,&weapons);
-	numWeapons = getNumWeapons(weapons);
-	cout << "Total weapons: " << numWeapons << endl;
-
-	cout << "Name of weapon(bitwise " << weapons << ")? ";
-
-	cout << weapons << endl;
-	cin >> weaponName;
-	setWeapon(weaponName, &weapons);
-	numWeapons = getNumWeapons(weapons);
-	cout << "Total weapons: " << numWeapons << endl;
-
-	cout << "Name of weapon(bitwise " << weapons << ")? ";
-	cin >> weaponName;
-	hasWeapon(weaponName,weapons);
-	
-	printAvailableWeapons(weapons);
-	
 	////////////////////////////////////////
 	
-	cout << "Name of animal(bitwise " << animals << ")? ";
-
-	cout << numAnimals << endl;
-	cin >> animalName;
-	setAnimal(animalName, &animals);
-	numAnimals = getNumAnimals(animals);
-	cout << "Total animals: " << numAnimals << endl;
-
-	cout << "Name of animal(bitwise " << animals << ")? ";
-
-	cout << animals << endl;
-	cin >> animalName;
-	setAnimal(animalName, &animals);
-	numAnimals = getNumAnimals(animals);
-	cout << "Total animals: " << numAnimals << endl;
-
-	cout << "Name of animal(bitwise " << animals << ")? ";
-	cin >> animalName;
-	hasAnimal(animalName, animals);
-
-	printAvailableAnimals(animals);
-
-	printRegisterStatus(registered);
-	getchar();
-	registerNextTournament(&registered);
-	isRegisteredNextTournament(registered);
-	printRegisterStatus(registered);
-
-	setLevel(capabilitiesP);
-	incLevel(capabilitiesP);
-	decLevel(capabilitiesP);
-
-	setStrength(capabilitiesP);
-	incStrength(capabilitiesP);
-	decStrength(capabilitiesP);
-
-	setAgility(capabilitiesP);
-	incAgility(capabilitiesP);
-	decAgility(capabilitiesP);
-
-	setSpeed(capabilitiesP);
-	incSpeed(capabilitiesP);
-	decSpeed(capabilitiesP);
-
-	setAll(capabilitiesP);
-	incAll(capabilitiesP);
-	decAll(capabilitiesP);
 	
-	getchar();
+	
+	/*
+	
+
+	
+
+	
+
+	
+
+	*/
+	
 	getchar();
 
 	return 0;
@@ -278,45 +308,51 @@ int main()
 //name
 void setName(char* name)
 {
+	cout << "Name: ";
 	cin >> name;
 }
 char* getName(char* name)
 {
+	cout << name << " returned as char*" << endl;
 	return name;
 }
 void printName(char* name)
 {
-	cout << name << endl;
+	cout << "Your name is " << name << endl;
 }
 
 //disciples
 void setDisciples(unsigned short* disciples)
 {
 	unsigned short numberDisciples = 0;
+	cout << "Number of disciples? ";
 	cin >> numberDisciples;
 	*disciples = numberDisciples;
 }
 unsigned short getDisciples(unsigned short disciples)
 {
+	cout << disciples << " returned as unsigned short" << endl;
 	return disciples;
 }
 void printDisciples(unsigned short disciples)
 {
-	cout << disciples << endl;
+	cout << disciples << " disciples.\n";
 }
 
 //Clan name
 void setClanName(char* clanName)                                   /////// strings with espaces should be better
 {
+	cout << "Clan name: ";
 	cin >> clanName;
 }                         
 char* getClanName(char* clanName)
 {
+	cout << clanName << " returned as char*" << endl;
 	return clanName;
 }
 void printClanName(char* clanName)
 {
-	cout << clanName << endl;
+	cout << "Your clan's name is " << clanName << endl;
 }
 
 //weapons
@@ -331,7 +367,7 @@ unsigned short getNumWeapons(unsigned short weapons)              /////// sum op
 			counter++;
 		}
 	}
-
+	cout << counter << " returned as unsigned short" << endl;
 	return counter;
 }           
 void setWeapon(char* weaponName, unsigned short* weapons)          /////// strings with espaces should be better
@@ -540,35 +576,199 @@ void setWeapon(char* weaponName, unsigned short* weapons)          /////// strin
 }
 void hasWeapon(char* weaponName, unsigned short weapons)
 {
-	///////////SWORD///////////
-	if (strcmp(weaponName, "Sword") == 0)
+	///////////StoneHammer///////////
+	if (strcmp(weaponName, "StoneHammer") == 0)
 	{
-		if ((weapons & 0x1000) >> 8)
+		if (weapons & 0x0001)
 		{
-			cout << "You have " << weaponName << " already.\n";
+			std::cout << "You have " << weaponName << "\n";
 		}
 		else
 		{
-			cout << "You don't have " << weaponName << ".\n";
+			std::cout << "You have not " << weaponName << "\n";
 		}
 	}
-
-
-	///////////KNIFE///////////
+	///////////Baton///////////
+	else if (strcmp(weaponName, "Baton") == 0)
+	{
+		if ((weapons & 0x0002) >> 1)
+		{
+			cout << "You have " << weaponName << "\n";
+		}
+		else
+		{
+			std::cout << "You have not " << weaponName << "\n";
+		}
+	}
+	///////////BROADSWORD///////////
+	else if (strcmp(weaponName, "Broadsword") == 0)
+	{
+		if ((weapons & 0x0004) >> 2)
+		{
+			cout << "You have " << weaponName << "\n";
+		}
+		else
+		{
+			std::cout << "You have not " << weaponName << "\n";
+		}
+	}
+	///////////Bumps///////////
+	else if (strcmp(weaponName, "Bumps") == 0)
+	{
+		if ((weapons & 0x0008) >> 3)
+		{
+			cout << "You have " << weaponName << "\n";
+		}
+		else
+		{
+			std::cout << "You have not " << weaponName << "\n";
+		}
+	}
+	///////////Keyboard///////////
+	else if (strcmp(weaponName, "Keyboard") == 0)
+	{
+		if ((weapons & 0x0010) >> 4)
+		{
+			cout << "You have " << weaponName << "\n";
+		}
+		else
+		{
+			std::cout << "You have not " << weaponName << "\n";
+		}
+	}
+	///////////Knife///////////
 	else if (strcmp(weaponName, "Knife") == 0)
 	{
 		if ((weapons & 0x0020) >> 5)
 		{
-			cout << "You have " << weaponName << " already.\n";
+			cout << "You have " << weaponName << "\n";
 		}
 		else
 		{
-			cout << "You don't have " << weaponName << ".\n";
+			std::cout << "You have not " << weaponName << "\n";
 		}
 	}
-
+	///////////MorningStar///////////
+	else if (strcmp(weaponName, "MorningStar") == 0)
+	{
+		if ((weapons & 0x0040) >> 6)
+		{
+			cout << "You have " << weaponName << "\n";
+		}
+		else
+		{
+			std::cout << "You have not " << weaponName << "\n";
+		}
+	}
+	///////////Lance///////////
+	else if (strcmp(weaponName, "Lance") == 0)
+	{
+		if ((weapons & 0x0080) >> 7)
+		{
+			cout << "You have " << weaponName << "\n";
+		}
+		else
+		{
+			std::cout << "You have not " << weaponName << "\n";
+		}
+	}
+	///////////MammothBone///////////
+	else if (strcmp(weaponName, "MammothBone") == 0)
+	{
+		if ((weapons & 0x0100) >> 8)
+		{
+			cout << "You have " << weaponName << "\n";
+		}
+		else
+		{
+			std::cout << "You have not " << weaponName << "\n";
+		}
+	}
+	///////////Shuriken///////////
+	else if (strcmp(weaponName, "Shuriken") == 0)
+	{
+		if ((weapons & 0x0200) >> 9)
+		{
+			cout << "You have " << weaponName << "\n";
+		}
+		else
+		{
+			std::cout << "You have not " << weaponName << "\n";
+		}
+	}
+	///////////NoodleBowl///////////
+	else if (strcmp(weaponName, "NoodleBowl") == 0)
+	{
+		if ((weapons & 0x0400) >> 10)
+		{
+			cout << "You have " << weaponName << "\n";
+		}
+		else
+		{
+			std::cout << "You have not " << weaponName << "\n";
+		}
+	}
+	///////////PiouPiouz///////////
+	else if (strcmp(weaponName, "PiouPiouz") == 0)
+	{
+		if ((weapons & 0x0800) >> 11)
+		{
+			cout << "You have " << weaponName << "\n";
+		}
+		else
+		{
+			std::cout << "You have not " << weaponName << "\n";
+		}
+	}
+	///////////SWORD///////////
+	else if (strcmp(weaponName, "Sword") == 0)
+	{
+		if ((weapons & 0x1000) >> 12)
+		{
+			cout << "You have " << weaponName << "\n";
+		}
+		else
+		{
+			std::cout << "You have not " << weaponName << "\n";
+		}
+	}
+	///////////TennisRacket///////////
+	else if (strcmp(weaponName, "TennisRacket") == 0)
+	{
+		if ((weapons & 0x2000) >> 13)
+		{
+			cout << "You have " << weaponName << "\n";
+		}
+		else
+		{
+			std::cout << "You have not " << weaponName << "\n";
+		}
+	}
+	///////////Trident///////////
+	else if (strcmp(weaponName, "Trident") == 0)
+	{
+		if ((weapons & 0x4000) >> 14)
+		{
+			cout << "You have " << weaponName << "\n";
+		}
+		else
+		{
+			std::cout << "You have not " << weaponName << "\n";
+		}
+	}
+	///////////Trombone///////////
+	else if (strcmp(weaponName, "Trombone") == 0)
+	{
+		if ((weapons & 0x8000) >> 15)
+		{
+			cout << "You have " << weaponName << "\n";
+		}
+		else
+		{
+			std::cout << "You have not " << weaponName << "\n";
+		}
+	}
 	/////////WRONG NAME////////////
-
 	else
 	{
 		cout << "That name does not exists.\n";
@@ -576,7 +776,7 @@ void hasWeapon(char* weaponName, unsigned short weapons)
 }
 void printAvailableWeapons(unsigned short weapons)
 {
-	if (getNumWeapons != 0)
+	if (weapons != 0)
 	{
 		cout << "Your weapons:\n";
 		for (int i = 0; i < 16; i++)
@@ -669,7 +869,7 @@ unsigned short getNumAnimals(unsigned short animals)
 			counter++;
 		}
 	}
-
+	cout << counter << " returned as unsigned short" << endl;
 	return counter;
 }
 void setAnimal(char* animalName, unsigned short* animals)
@@ -813,6 +1013,14 @@ void registerNextTournament(bool* registered)
 }
 bool isRegisteredNextTournament(bool registered)
 {
+	if (registered == true)
+	{
+		cout << "Bool(true) returned.\n";
+	}
+	else
+	{
+		cout << "Bool(false) returned.\n";
+	}
 	return registered;
 }
 void printRegisterStatus(bool registered)
