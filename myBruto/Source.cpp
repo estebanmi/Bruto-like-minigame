@@ -6,11 +6,11 @@ using namespace std;
 
 struct capability
 {
-	unsigned short* level = 0;
-	unsigned short lifeUnits = 100;
-	unsigned short* strUnits = 0;
-	unsigned short* agiUnits = 0;
-	unsigned short* speedUnits = 0;
+	unsigned short level = 0;
+	unsigned short life = 100;
+	unsigned short strength = 0;
+	unsigned short agility = 0;
+	unsigned short speed = 0;
 };
 
 // functions ///////////////////////////////
@@ -41,6 +41,27 @@ void printAvailableAnimals(unsigned short);
 void registerNextTournament(bool*);
 bool isRegisteredNextTournament(bool);
 void printRegisterStatus(bool);
+//capabilities
+void setLevel(capability*);
+void incLevel(capability*);
+void decLevel(capability*);
+
+void setStrength(capability*);
+void incStrength(capability*);
+void decStrength(capability*);
+
+void setAgility(capability*);
+void incAgility(capability*);
+void decAgility(capability*);
+
+void setSpeed(capability*);
+void incSpeed(capability*);
+void decSpeed(capability*);
+
+void setAll(capability*);
+void incAll(capability*);
+void decAll(capability*);
+
 
 int main()
 {
@@ -59,6 +80,9 @@ int main()
 	unsigned short animals = 0;
 	unsigned short numAnimals = 0;
 	bool registered = 0;
+
+	capability* capabilitiesP;
+	capabilitiesP = &capabilites;
 
 	/*setName(name);
 	getName(name);
@@ -92,7 +116,7 @@ int main()
 	cin >> weaponName;
 	hasWeapon(weaponName,weapons);
 	
-	printAvailableWeapons(weapons);*/
+	printAvailableWeapons(weapons);
 	
 	////////////////////////////////////////
 
@@ -122,9 +146,27 @@ int main()
 	getchar();
 	registerNextTournament(&registered);
 	isRegisteredNextTournament(registered);
-	printRegisterStatus(registered);
+	printRegisterStatus(registered);*/
 
-	
+	setLevel(capabilitiesP);
+	incLevel(capabilitiesP);
+	decLevel(capabilitiesP);
+
+	setStrength(capabilitiesP);
+	incStrength(capabilitiesP);
+	decStrength(capabilitiesP);
+
+	setAgility(capabilitiesP);
+	incAgility(capabilitiesP);
+	decAgility(capabilitiesP);
+
+	setSpeed(capabilitiesP);
+	incSpeed(capabilitiesP);
+	decSpeed(capabilitiesP);
+
+	setAll(capabilitiesP);
+	incAll(capabilitiesP);
+	decAll(capabilitiesP);
 
 	getchar();
 	getchar();
@@ -515,5 +557,274 @@ void printRegisterStatus(bool registered)
 	else
 	{
 		cout << "-Not registered.\n";
+	}
+}
+
+// capabilites /////////////////////////////////////////////
+
+//level
+void setLevel(capability* capabilitiesP)
+{
+	short filter;
+	cout << "Set level(0-100): ";
+	cin >> filter;
+
+	if ((filter >= 0) && (filter <= 100))
+	{
+		capabilitiesP->level = filter;
+		cout << "Your level is " << capabilitiesP->level << " now.\n";
+	}
+	else
+	{
+		cout << "You can't set this number (try 0-100).\n";
+	}
+}
+void incLevel(capability* capabilitiesP)
+{
+	short filter;
+	cout << "Increment by(Max total 100): ";
+	cin >> filter;
+
+	if (((filter + capabilitiesP->level) >= 0) && ((filter + capabilitiesP->level) <= 100))
+	{
+		capabilitiesP->level += filter;
+		cout << "Your level is " << capabilitiesP->level << " now.\n";
+	}
+	else
+	{
+		cout << "You can't increment(total must be 0-100).\n";
+	}
+}
+void decLevel(capability* capabilitiesP)
+{
+	short filter;
+	cout << "Decrement by(Min total 0): ";
+	cin >> filter;
+
+	if (((capabilitiesP->level - filter) >= 0) && ((capabilitiesP->level - filter) <= 100))
+	{
+		capabilitiesP->level -= filter;
+		cout << "Your level is " << capabilitiesP->level << " now.\n";
+	}
+	else
+	{
+		cout << "You can't decrement(total must be 0-100).\n";
+	}
+}
+//strength
+void setStrength(capability* capabilitiesP)
+{
+	short filter;
+	cout << "Set strength(0-100): ";
+	cin >> filter;
+
+	if ((filter >= 0) && (filter <= 100))
+	{
+		capabilitiesP->strength = filter;
+		cout << "Your strength is " << capabilitiesP->strength << " now.\n";
+	}
+	else
+	{
+		cout << "You can't set this number (try 0-100).\n";
+	}
+}
+void incStrength(capability* capabilitiesP)
+{
+	short filter;
+	cout << "Increment by(Max total 100): ";
+	cin >> filter;
+
+	if (((filter + capabilitiesP->strength) >= 0) && ((filter + capabilitiesP->strength) <= 100))
+	{
+		capabilitiesP->strength += filter;
+		cout << "Your strength is " << capabilitiesP->strength << " now.\n";
+	}
+	else
+	{
+		cout << "You can't increment(total must be 0-100).\n";
+	}
+}
+void decStrength(capability* capabilitiesP)
+{
+	short filter;
+	cout << "Decrement by(Min total 0): ";
+	cin >> filter;
+
+	if (((capabilitiesP->strength - filter) >= 0) && ((capabilitiesP->strength - filter) <= 100))
+	{
+		capabilitiesP->strength -= filter;
+		cout << "Your strength is " << capabilitiesP->strength << " now.\n";
+	}
+	else
+	{
+		cout << "You can't decrement(total must be 0-100).\n";
+	}
+}
+//agility
+void setAgility(capability* capabilitiesP)
+{
+	short filter;
+	cout << "Set agility(0-100): ";
+	cin >> filter;
+
+	if ((filter >= 0) && (filter <= 100))
+	{
+		capabilitiesP->agility = filter;
+		cout << "Your agility is " << capabilitiesP->agility << " now.\n";
+	}
+	else
+	{
+		cout << "You can't set this number (try 0-100).\n";
+	}
+}
+void incAgility(capability* capabilitiesP)
+{
+	short filter;
+	cout << "Increment by(Max total 100): ";
+	cin >> filter;
+
+	if (((filter + capabilitiesP->agility) >= 0) && ((filter + capabilitiesP->agility) <= 100))
+	{
+		capabilitiesP->agility += filter;
+		cout << "Your agility is " << capabilitiesP->agility << " now.\n";
+	}
+	else
+	{
+		cout << "You can't increment(total must be 0-100).\n";
+	}
+}
+void decAgility(capability* capabilitiesP)
+{
+	short filter;
+	cout << "Decrement by(Min total 0): ";
+	cin >> filter;
+
+	if (((capabilitiesP->agility - filter) >= 0) && ((capabilitiesP->agility - filter) <= 100))
+	{
+		capabilitiesP->agility -= filter;
+		cout << "Your agility is " << capabilitiesP->agility << " now.\n";
+	}
+	else
+	{
+		cout << "You can't decrement(total must be 0-100).\n";
+	}
+}
+//speed
+void setSpeed(capability* capabilitiesP)
+{
+	short filter;
+	cout << "Set speed(0-100): ";
+	cin >> filter;
+
+	if ((filter >= 0) && (filter <= 100))
+	{
+		capabilitiesP->speed = filter;
+		cout << "Your speed is " << capabilitiesP->speed << " now.\n";
+	}
+	else
+	{
+		cout << "You can't set this number (try 0-100).\n";
+	}
+}
+void incSpeed(capability* capabilitiesP)
+{
+	short filter;
+	cout << "Increment by(Max total 100): ";
+	cin >> filter;
+
+	if (((filter + capabilitiesP->speed) >= 0) && ((filter + capabilitiesP->speed) <= 100))
+	{
+		capabilitiesP->speed += filter;
+		cout << "Your speed is " << capabilitiesP->speed << " now.\n";
+	}
+	else
+	{
+		cout << "You can't increment(total must be 0-100).\n";
+	}
+}
+void decSpeed(capability* capabilitiesP)
+{
+	short filter;
+	cout << "Decrement by(Min total 0): ";
+	cin >> filter;
+
+	if (((capabilitiesP->speed - filter) >= 0) && ((capabilitiesP->speed - filter) <= 100))
+	{
+		capabilitiesP->speed -= filter;
+		cout << "Your speed is " << capabilitiesP->speed << " now.\n";
+	}
+	else
+	{
+		cout << "You can't decrement(total must be 0-100).\n";
+	}
+}
+//all capabilites
+void setAll(capability* capabilitiesP)
+{
+	short filter;
+	cout << "Set all capabilities to(0-100): ";
+	cin >> filter;
+
+	if ((filter >= 0) && (filter <= 100))
+	{
+		capabilitiesP->level = filter;
+		capabilitiesP->strength = filter;
+		capabilitiesP->agility = filter;
+		capabilitiesP->speed = filter;
+		cout << "Your capabilities now are:\n";
+		cout << "-Level\t\t" << capabilitiesP->level << " \n";
+		cout << "-Strength\t" << capabilitiesP->strength << " \n";
+		cout << "-Agility\t" << capabilitiesP->agility << " \n";
+		cout << "-Speed\t\t" << capabilitiesP->speed << " \n";
+	}
+	else
+	{
+		cout << "You can't set this number (try 0-100).\n";
+	}
+}
+void incAll(capability* capabilitiesP)
+{
+	short filter;
+	cout << "Increment by(Max total 100): ";
+	cin >> filter;
+
+	if (((filter + capabilitiesP->level) >= 0) && ((filter + capabilitiesP->level) <= 100) && ((filter + capabilitiesP->strength) >= 0) && ((filter + capabilitiesP->strength) <= 100) && ((filter + capabilitiesP->agility) >= 0) && ((filter + capabilitiesP->agility) <= 100) && ((filter + capabilitiesP->speed) >= 0) && ((filter + capabilitiesP->speed) <= 100))
+	{
+		capabilitiesP->level += filter;
+		capabilitiesP->strength += filter;
+		capabilitiesP->agility += filter;
+		capabilitiesP->speed += filter;
+		cout << "Your capabilities now are:\n";
+		cout << "-Level\t\t" << capabilitiesP->level << " \n";
+		cout << "-Strength\t" << capabilitiesP->strength << " \n";
+		cout << "-Agility\t" << capabilitiesP->agility << " \n";
+		cout << "-Speed\t\t" << capabilitiesP->speed << " \n";
+	}
+	else
+	{
+		cout << "You can't increment(One or more capabilies are out 0-100).\n";
+	}
+}
+void decAll(capability* capabilitiesP)
+{
+	short filter;
+	cout << "Decrement by(Max total 100): ";
+	cin >> filter;
+
+	if (((capabilitiesP->level - filter) >= 0) && ((capabilitiesP->level - filter) <= 100) && ((capabilitiesP->strength - filter) >= 0) && ((capabilitiesP->strength - filter) <= 100) && ((capabilitiesP->agility - filter) >= 0) && ((capabilitiesP->agility - filter) <= 100) && ((capabilitiesP->speed - filter) >= 0) && ((capabilitiesP->speed - filter) <= 100))
+	{
+		capabilitiesP->level -= filter;
+		capabilitiesP->strength -= filter;
+		capabilitiesP->agility -= filter;
+		capabilitiesP->speed -= filter;
+		cout << "Your capabilities now are:\n";
+		cout << "-Level\t\t" << capabilitiesP->level << " \n";
+		cout << "-Strength\t" << capabilitiesP->strength << " \n";
+		cout << "-Agility\t" << capabilitiesP->agility << " \n";
+		cout << "-Speed\t\t" << capabilitiesP->speed << " \n";
+	}
+	else
+	{
+		cout << "You can't decrement(One or more capabilies are out 0-100).\n";
 	}
 }
