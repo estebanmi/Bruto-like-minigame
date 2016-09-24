@@ -65,37 +65,138 @@ void decAll(capability*);
 
 int main()
 {
-	char* name = new char[10];
-
+		//player
+	char* name = new char[10];	
+		//disciples
 	unsigned short disciples = 0;
 	unsigned short* disciplesPointer = &disciples;
-
+		//clan
 	char* clanName = new char[20];
-	capability capabilites;
-
-	char weaponName[20];
-	char animalName[10];
+		//weapons
+	char weaponName[20];	
 	unsigned short weapons = 0;
 	unsigned short numWeapons = 0;
+		//animals
+	char animalName[10];
 	unsigned short animals = 0;
 	unsigned short numAnimals = 0;
+		//tournament
 	bool registered = 0;
-
+		//capabilities
+	capability capabilites;
 	capability* capabilitiesP;
 	capabilitiesP = &capabilites;
+		//menus
+	bool menu1 = true;  //for buckles
+	bool menu2 = true;
+	unsigned short menu1option = 0;  //for answers
+	unsigned short menu2option = 0;
 
-	/*setName(name);
-	getName(name);
-	printName(name);
+	/// MENU 1/ ///////////////////////////
+	while (menu1)
+	{
+		system("CLS");
+		cout << "\n*** WELCOME TO MyBRUTO ************************** Esteban Marin\n" << endl;
 
-	setDisciples(&disciples);
-	getDisciples(disciples);
-	printDisciples(disciples);
+		cout << "1 - Set player name.\t\t" << "12 - Set weapon." << endl;
+		cout << "2 - Get player name.\t\t" << "13 - Has weapon." << endl;
+		cout << "3 - Print player name.\t\t" << "14 - Print weapons." << endl;
+		cout << "4 - Set disciples.\t\t" << "15 - Number of animals." << endl;
+		cout << "5 - Get disciples.\t\t" << "16 - Set animal." << endl;
+		cout << "6 - Print disciples.\t\t" << "17 - Has animal." << endl;
+		cout << "7 - Set Clan name.\t\t" << "18 - Print animals." << endl;
+		cout << "8 - Get Clan name.\t\t" << "19 - Resgister next tournament." << endl;
+		cout << "9 - Print Clan name.\t\t" << "20 - Get resgister status." << endl;
+		cout << "10- Set Capabilities.\t\t" << "21 - Print resgister status." << endl;
+		cout << "11- Number of weapons.\t\t" << "22 - Quit." << endl;
+		cout << "\nOption: ";
+		cin >> menu1option;
 
-	setClanName(clanName);  
-	getClanName(clanName);
-	printClanName(clanName);
-	*/
+		switch (menu1option)
+		{
+		case 1:
+			setName(name);
+			break;
+		case 2:
+			getName(name);
+			break;
+		case 3:
+			printName(name);
+			getchar();
+			getchar();
+			break;
+		case 4:
+			setDisciples(&disciples);
+			break;
+		case 5:
+			getDisciples(disciples);
+			break;
+		case 6:
+			printDisciples(disciples);
+			break;
+		case 7:
+			setClanName(clanName);		
+			break;
+		case 8:
+			getClanName(clanName);		
+			break;
+		case 9:
+			printClanName(clanName);
+			break;
+		case 10:
+
+			break;
+		case 11:
+
+			break;
+		case 12:
+
+			break;
+		case 13:
+
+			break;
+		case 14:
+
+			break;
+		case 15:
+
+			break;
+		case 16:
+
+			break;
+		case 17:
+
+			break;
+		case 18:
+
+			break;
+		case 19:
+
+			break;
+		case 20:
+
+			break;
+		case 21:
+
+			break;
+		case 22:
+
+			break;
+		default:
+			cout << "Wrong input! Your option must be 1-22.";
+		}
+	}
+	
+
+
+	
+	
+	
+
+	
+
+	
+	
 	cout << "Name of weapon(bitwise " << weapons << ")? ";
 
 	cout << weapons << endl;
@@ -119,7 +220,7 @@ int main()
 	printAvailableWeapons(weapons);
 	
 	////////////////////////////////////////
-	/*
+	
 	cout << "Name of animal(bitwise " << animals << ")? ";
 
 	cout << numAnimals << endl;
@@ -167,7 +268,7 @@ int main()
 	setAll(capabilitiesP);
 	incAll(capabilitiesP);
 	decAll(capabilitiesP);
-	*/
+	
 	getchar();
 	getchar();
 
